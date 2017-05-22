@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign In View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SignInViewController" customModule="TheTutorApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Tutor App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjX-6r-5OV">
+                                <rect key="frame" x="34" y="70" width="306" height="90"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Find Tutors on Campus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Vu-oa-FiH">
+                                <rect key="frame" x="79" y="139" width="216" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7d-Ie-4ZK" customClass="GIDSignInButton">
+                                <rect key="frame" x="84" y="305" width="207" height="57"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pjX-6r-5OV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="95w-Nc-HAj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pjX-6r-5OV" secondAttribute="trailing" constant="19" id="DGt-3U-ACC"/>
+                            <constraint firstItem="pjX-6r-5OV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="18" id="T8J-VE-VIT"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="pjX-6r-5OV" secondAttribute="bottom" constant="507" id="TW4-88-KfJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="vvm-Gs-cCW" kind="presentation" identifier="FeedSegue" id="EK1-eE-PGE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1372" y="116"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="TWc-AP-aXp">
+            <objects>
+                <viewController id="Cc0-UQ-4oe" customClass="FeedViewController" customModule="TheTutorApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YVx-e0-jOf"/>
+                        <viewControllerLayoutGuide type="bottom" id="k5f-Xb-Sg9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xSp-lE-2zj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LFR-nN-DdC">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Feed" id="IYF-iF-1QG">
+                        <barButtonItem key="leftBarButtonItem" title="myProfile" id="HxH-SS-AT3">
+                            <connections>
+                                <segue destination="1i7-kR-hin" kind="presentation" identifier="myProfileSegue" id="jOe-nu-8an"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aa8-Z7-wJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="186" y="116"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="5Tr-bC-QsU">
+            <objects>
+                <viewController id="Rci-yl-nKf" customClass="ProfileViewController" customModule="TheTutorApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RHa-UU-15d"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pb4-c2-fsM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="z7b-d0-gn3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nmB-3y-geR">
+                                <rect key="frame" x="16" y="88" width="80" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Garry S. Barry" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DZN-o5-tBk">
+                                <rect key="frame" x="104" y="95" width="255" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Pb4-c2-fsM" firstAttribute="top" secondItem="DZN-o5-tBk" secondAttribute="bottom" constant="551" id="1Gc-wm-lEq"/>
+                            <constraint firstItem="DZN-o5-tBk" firstAttribute="leading" secondItem="z7b-d0-gn3" secondAttribute="leadingMargin" constant="88" id="NVI-m2-hbg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DZN-o5-tBk" secondAttribute="trailing" id="lmh-fW-DJS"/>
+                            <constraint firstItem="DZN-o5-tBk" firstAttribute="top" secondItem="RHa-UU-15d" secondAttribute="bottom" constant="75" id="oyz-Y0-7Bt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Profile" id="Erz-13-uDg"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="DZN-o5-tBk" id="8nz-np-MOk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wbR-6F-VvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="865" y="116"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="su0-rb-xOW">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vvm-Gs-cCW" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dYS-aa-ypU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Cc0-UQ-4oe" kind="relationship" relationship="rootViewController" id="Mqx-dH-OQ9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wod-Hv-uc4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-508" y="116"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hA4-l4-Zwg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DXR-ft-f2w" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rCf-KW-ULu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1i7-kR-hin" kind="relationship" relationship="rootViewController" id="UgA-cW-RLQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAl-Ay-cQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="802" y="793"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4XZ-Jw-t3h">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1i7-kR-hin" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="sjO-bK-4ec"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GJK-fv-TEu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Rci-yl-nKf" kind="relationship" relationship="rootViewController" id="gjV-O6-Khp"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4zV-up-Qvl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1490" y="761"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jOe-nu-8an"/>
+    </inferredMetricsTieBreakers>
+</document>
