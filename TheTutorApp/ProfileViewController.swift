@@ -9,22 +9,19 @@
 import UIKit
 import Firebase
 
+
 class ProfileViewController: UIViewController {
     
 
     @IBOutlet weak var nameLabel: UILabel!
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var user = Auth.auth().currentUser
+        let databaseRef = appDelegate.ref
         
-        if (user != nil) {
-            var name = user?.displayName
-            var photoURL = user?.photoURL
-            
-            nameLabel.text = name
-        }
-        
+        var user = Auth.auth().currentUser?.uid
         
 
         // Do any additional setup after loading the view.

@@ -13,30 +13,30 @@ import GoogleSignIn
 
 class SignInViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate{
     
-    var success = true
     var handle: AuthStateDidChangeListenerHandle?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
-        
-    
-       // GIDSignIn.sharedInstance().signIn()
-
+        GIDSignIn.sharedInstance().signInSilently()
         
     }
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         handle = Auth.auth().addStateDidChangeListener({ (auth, user) in
             
-        
-        
+            
+            
             //self.performSegue(withIdentifier: "FeedSegue", sender: nil)
-         
-        
+            
+            
             
         })
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

@@ -10,49 +10,93 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
+//TODO: Handle Revoked Tokens
+//TODO: Handle Email Domains
+//TODO: Handle Errors https://firebase.google.com/docs/auth/ios/errors
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     
     var window: UIWindow?
     var ref: DatabaseReference!
+    
+    
+    //MARK: Authentication - Google
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        //add dispatch?
-        if let error = error {
-            return
-        }
-        print("Signed into google")
         
-        guard let authentication = user.authentication else {
-            return
-        }
-        //restrict to ua-little rock
-        
-        let firstName = user.profile.givenName
-        let lastName = user.profile.familyName
-        let email = user.profile.email
-        
-    
-
-        let creds = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        
-        
-        
-        Auth.auth().signIn(with: creds) { (user, error) in
-            if let error = error {
-                return
-            }
-            self.ref = Database.database().reference()
-            self.ref.child("users/profile").child((user?.uid)!).setValue(["firstName": firstName, "lastName": lastName, "isTutor": false, "subjects": []])
-            print("firebase")
-            self.window?.rootViewController?.performSegue(withIdentifier: "FeedSegue", sender: nil)
+        if error == nil || !(error != nil) {
+            let authentication = user.authentication
+            let creds = GoogleAuthProvider.credential(withIDToken: (authentication?.idToken)!, accessToken: (authentication?.accessToken)!)
             
+            //Setup variables for a user profile, grab from google profile
+            let firstName = user.profile.givenName
+            let lastName = user.profile.familyName
+            let email = user.profile.email
+            
+            //TODO: Prevent Sign-In from incorrect Domain from Google
+            print(user.hostedDomain)
+            
+            
+            
+            //Here let's grab the google profile image URL if there is one, if not we can add a default image later
+            var profileImageURL = ""
+            if user.profile.hasImage {
+                profileImageURL = user.profile.imageURL(withDimension: 100).absoluteString
+                print(profileImageURL)
+            }else {
+                profileImageURL = "no image"
+            }
+            
+            
+            
+            
+            //Now we are actually signing into our app/firebase
+            Auth.auth().signIn(with: creds) { (user, error) in
+                if let error = error {
+                    print(error.localizedDescription)
+                    return
+                }
+
+                self.ref = Database.database().reference()
+                //Setup minimal profile, let user update later if valid
+                self.ref.child("users/profile").child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                    let snapshot = snapshot.value as? NSDictionary
+                    
+                    
+                    if (snapshot == nil){
+                        self.ref.child("users/profile").child((user!.uid)).setValue(["firstName": firstName!, "lastName": lastName!, "email": email!, "isAdmin": false, "isTutor": false, "profileImageURL": profileImageURL, "subjects": [""], "program": [""]])
+                        user?.sendEmailVerification(completion: { (error) in
+                            
+                        })
+                        print(snapshot!)
+                        
+                        
+                    }
+                    else{
+                        
+                        self.window?.rootViewController?.performSegue(withIdentifier: "FeedSegue", sender: nil)
+                        print(snapshot!)
+                        
+                        
+                    }
+                })
+                
+                
+            }
+            
+     
+           
+        }else {
+            print(error.localizedDescription)
         }
+        
+
+        
     }
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {

@@ -13,9 +13,9 @@
 		3F12B03A1EAA6D5700A6CA97 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F12B0381EAA6D5700A6CA97 /* LaunchScreen.storyboard */; };
 		3F12B0451EAA6D5700A6CA97 /* TheTutorAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12B0441EAA6D5700A6CA97 /* TheTutorAppTests.swift */; };
 		3F5033FE1ED348C200DB4BF2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5033FD1ED348C200DB4BF2 /* ProfileViewController.swift */; };
-		3F8DA1D71ECCEC9700EC8C51 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8DA1D61ECCEC9700EC8C51 /* FeedViewController.swift */; };
-		3FA94AE71EC0DC73001F9DFE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA94AE61EC0DC73001F9DFE /* SignUpViewController.swift */; };
-		3FA94AE91EC0DC93001F9DFE /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA94AE81EC0DC92001F9DFE /* SignInViewController.swift */; };
+		3F5034021ED34D7700DB4BF2 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5033FF1ED34D7700DB4BF2 /* FeedViewController.swift */; };
+		3F5034031ED34D7700DB4BF2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5034001ED34D7700DB4BF2 /* SignInViewController.swift */; };
+		3F50340A1ED61F7000DB4BF2 /* TutorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F5034091ED61F7000DB4BF2 /* TutorData.swift */; };
 		3FA94AEB1EC10756001F9DFE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FA94AEA1EC10756001F9DFE /* GoogleService-Info.plist */; };
 		703A3E60A33990BE9381FA86 /* Pods_TheTutorApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F4BF5C3B4632522398D3F9 /* Pods_TheTutorApp.framework */; };
 		759639AFBC147F0B0964687B /* Pods_TheTutorAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A5417D07DFCCF04174105F /* Pods_TheTutorAppTests.framework */; };
@@ -43,10 +43,10 @@
 		3F12B0441EAA6D5700A6CA97 /* TheTutorAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheTutorAppTests.swift; sourceTree = "<group>"; };
 		3F12B0461EAA6D5700A6CA97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F5033FD1ED348C200DB4BF2 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		3F5033FF1ED34D7700DB4BF2 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		3F5034001ED34D7700DB4BF2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		3F5034091ED61F7000DB4BF2 /* TutorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorData.swift; path = ../TutorData.swift; sourceTree = "<group>"; };
 		3F8DA1D51ECB973700EC8C51 /* TheTutorApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TheTutorApp.entitlements; sourceTree = "<group>"; };
-		3F8DA1D61ECCEC9700EC8C51 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FeedViewController.swift; path = ../FeedViewController.swift; sourceTree = "<group>"; };
-		3FA94AE61EC0DC73001F9DFE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = ../SignUpViewController.swift; sourceTree = "<group>"; };
-		3FA94AE81EC0DC92001F9DFE /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = ../SignInViewController.swift; sourceTree = "<group>"; };
 		3FA94AEA1EC10756001F9DFE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3FA94B0B1EC3774A001F9DFE /* TheTutorApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TheTutorApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		403619617CCFE580E799CCDA /* Pods-TheTutorAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheTutorAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheTutorAppTests/Pods-TheTutorAppTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -111,17 +111,12 @@
 		3F12B02E1EAA6D5700A6CA97 /* TheTutorApp */ = {
 			isa = PBXGroup;
 			children = (
-				3F8DA1D51ECB973700EC8C51 /* TheTutorApp.entitlements */,
+				3F50340E1ED73C6C00DB4BF2 /* Views */,
+				3F50340D1ED73C5000DB4BF2 /* Helpers */,
+				3F50340C1ED6213D00DB4BF2 /* Controllers */,
+				3F50340B1ED6213800DB4BF2 /* Model */,
 				3F12B02F1EAA6D5700A6CA97 /* AppDelegate.swift */,
-				3F8DA1D61ECCEC9700EC8C51 /* FeedViewController.swift */,
-				3FA94AE81EC0DC92001F9DFE /* SignInViewController.swift */,
-				3FA94AE61EC0DC73001F9DFE /* SignUpViewController.swift */,
-				3FA94AEA1EC10756001F9DFE /* GoogleService-Info.plist */,
-				3F12B0331EAA6D5700A6CA97 /* Main.storyboard */,
 				3F12B0361EAA6D5700A6CA97 /* Assets.xcassets */,
-				3F12B0381EAA6D5700A6CA97 /* LaunchScreen.storyboard */,
-				3F12B03B1EAA6D5700A6CA97 /* Info.plist */,
-				3F5033FD1ED348C200DB4BF2 /* ProfileViewController.swift */,
 			);
 			path = TheTutorApp;
 			sourceTree = "<group>";
@@ -133,6 +128,43 @@
 				3F12B0461EAA6D5700A6CA97 /* Info.plist */,
 			);
 			path = TheTutorAppTests;
+			sourceTree = "<group>";
+		};
+		3F50340B1ED6213800DB4BF2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3F5034091ED61F7000DB4BF2 /* TutorData.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		3F50340C1ED6213D00DB4BF2 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3F5033FF1ED34D7700DB4BF2 /* FeedViewController.swift */,
+				3F5034001ED34D7700DB4BF2 /* SignInViewController.swift */,
+				3F5033FD1ED348C200DB4BF2 /* ProfileViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3F50340D1ED73C5000DB4BF2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3F12B03B1EAA6D5700A6CA97 /* Info.plist */,
+				3F8DA1D51ECB973700EC8C51 /* TheTutorApp.entitlements */,
+				3FA94AEA1EC10756001F9DFE /* GoogleService-Info.plist */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		3F50340E1ED73C6C00DB4BF2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3F12B0331EAA6D5700A6CA97 /* Main.storyboard */,
+				3F12B0381EAA6D5700A6CA97 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		595E4ED5C46954BDBEB40383 /* Frameworks */ = {
@@ -355,10 +387,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FA94AE91EC0DC93001F9DFE /* SignInViewController.swift in Sources */,
-				3F8DA1D71ECCEC9700EC8C51 /* FeedViewController.swift in Sources */,
+				3F50340A1ED61F7000DB4BF2 /* TutorData.swift in Sources */,
+				3F5034031ED34D7700DB4BF2 /* SignInViewController.swift in Sources */,
 				3F5033FE1ED348C200DB4BF2 /* ProfileViewController.swift in Sources */,
-				3FA94AE71EC0DC73001F9DFE /* SignUpViewController.swift in Sources */,
+				3F5034021ED34D7700DB4BF2 /* FeedViewController.swift in Sources */,
 				3F12B0301EAA6D5700A6CA97 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
