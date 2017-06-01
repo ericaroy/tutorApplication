@@ -11,25 +11,56 @@ import Firebase
 import GoogleSignIn
 
 
-class FeedViewController: UIViewController, GIDSignInUIDelegate {
-   
 
-    
+
+class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource {
+   
     var handle: AuthStateDidChangeListenerHandle?
     var user = Auth.auth().currentUser
+    var ref: DatabaseReference!
+    var tutors = [Tutor] ()
     
     
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        
-
-        // Do any additional setup after loading the view.
+       
+       
+        let ref = Database.database().reference()
+     
+        ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            self.tutors = []
+            
+            if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                for child in result {
+                    let xDict = child.value as? NSDictionary
+                   // print(child.key)
+                    let key = child.key
+                    
+                   // print(xDict)
+                   let stuff = Tutor(key: key, dictionary: xDict!)
+                   // print(x?["email"] as! String)
+                   // print(stuff)
+                    self.tutors.insert(stuff, at: 0)
+                   // print(self.tutors)
+            
+                    
+                   
+                }
+            }
+            self.tableView.reloadData()
+            
+        }) { (error) in
+            print(error)
+        }
+      
+    
+     
     }
 
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,12 +85,12 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate {
     
      func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tutors.count
     }
     
   
@@ -75,22 +106,37 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate {
                 print("Dismissed")
                 
             })
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
+        } catch  {
+            print ("Error signing out:")
+            print(Error.self)
         }
 
         
     }
-    
-    /*
-     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+ 
+      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TutorCell", for: indexPath) as! TutorTableViewCell
+        
+      
+        let theTutor = tutors[indexPath.row]
+        cell.tutorName?.text = theTutor.firstName + " " + theTutor.lastName
+        cell.tutorProgram?.text = theTutor.programCode
+        
+        let url = URL(string: theTutor.profileImageURL)
+        if let data = NSData(contentsOf: url!) {
+            cell.tutorImage?.image = UIImage(data: data as Data)
+        }//else put a stub image
+        
+        cell.tutorImage.layer.cornerRadius = 10.0
+        cell.tutorImage.clipsToBounds = true
+        cell.tutorImage.layer.borderWidth = 2.0
+        cell.tutorImage.layer.borderColor = UIColor.black.cgColor
      
-     // Configure the cell...
-     
-     return cell
+        return cell
      }
-     */
+
     
     /*
      // Override to support conditional editing of the table view.

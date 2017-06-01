@@ -64,24 +64,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
 
                 self.ref = Database.database().reference()
                 //Setup minimal profile, let user update later if valid
-                self.ref.child("users/profile").child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                self.ref.child("users").child(user!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
                     let snapshot = snapshot.value as? NSDictionary
                     
                     
                     if (snapshot == nil){
-                        self.ref.child("users/profile").child((user!.uid)).setValue(["firstName": firstName!, "lastName": lastName!, "email": email!, "isAdmin": false, "isTutor": false, "profileImageURL": profileImageURL, "subjects": [""], "program": [""]])
+                        self.ref.child("users").child((user!.uid)).setValue(["firstName": firstName!, "lastName": lastName!, "email": email!, "isTutor": true, "profileImage": profileImageURL,
+                            "subjects": [""], "program": ""])
                         user?.sendEmailVerification(completion: { (error) in
                             
                         })
-                        print(snapshot!)
+                      
                         
                         
                     }
                     else{
                         
                         self.window?.rootViewController?.performSegue(withIdentifier: "FeedSegue", sender: nil)
-                        print(snapshot!)
-                        
+                       
                         
                     }
                 })

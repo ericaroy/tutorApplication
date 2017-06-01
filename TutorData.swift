@@ -13,24 +13,26 @@ import Firebase
 
 struct Tutor {
     
-    let firstName: String
-    let lastName: String
-    let email: String
+    var firstName: String
+    var lastName: String
+    var email: String
     var isTutor: Bool
     var profileImageURL: String
-    var subjectCode: [String: String] // Accounting(ACCT), Marketing(MKTG)
-    var programCode: [String]
-    //let ref: DatabaseReference!
+    var subjectCode: [String] // Accounting(ACCT), Marketing(MKTG)
+    var programCode: String
+    var dictKey: String
+   
     
-    init(firstName: String, lastName: String, email: String, isTutor: Bool, profileImageURL: String, subjectCode: [String: String], programCode: [String]) {
+    init(key: String, dictionary: NSDictionary) {
+        self.dictKey = key
         
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
-        self.isTutor = isTutor
-        self.profileImageURL = profileImageURL
-        self.subjectCode = subjectCode
-        self.programCode = programCode
+        self.firstName = dictionary["firstName"] as! String!
+        self.lastName = dictionary["lastName"] as! String!
+        self.email = dictionary["email"] as! String!
+        self.isTutor = dictionary["isTutor"] as! Bool!
+        self.profileImageURL = dictionary["profileImage"] as! String!
+        self.subjectCode = dictionary["subjects"] as! [String]!
+        self.programCode = dictionary["program"] as! String!
         
         
     }

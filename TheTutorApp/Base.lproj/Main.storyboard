@@ -36,6 +36,9 @@
                                 <state key="normal" title="Submit an Application">
                                     <color key="titleColor" red="0.074520841240882874" green="0.59220272302627563" blue="0.58045047521591187" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="sendTutorApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nBs-eQ-0ZE"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Want to become a tutor?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ug3-Xz-V89">
                                 <rect key="frame" x="62" y="596" width="250" height="21"/>
@@ -81,26 +84,26 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="71" id="0oi-ve-1J8">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="71"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TutorCell" rowHeight="90" id="0oi-ve-1J8" customClass="TutorTableViewCell" customModule="TheTutorApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0oi-ve-1J8" id="mVj-f2-SYX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user-37" translatesAutoresizingMaskIntoConstraints="NO" id="mP6-Jd-NJb">
-                                                    <rect key="frame" x="18" y="15" width="40" height="40"/>
+                                                    <rect key="frame" x="24" y="22" width="40" height="40"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Garry S. Barry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jT-cv-tAw">
-                                                    <rect key="frame" x="72" y="15" width="222" height="31"/>
+                                                    <rect key="frame" x="72" y="15" width="187" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trio Services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-t3-FzA">
-                                                    <rect key="frame" x="72" y="41" width="102" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Program Code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-t3-FzA">
+                                                    <rect key="frame" x="72" y="41" width="111" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -109,6 +112,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
+                                        <connections>
+                                            <outlet property="tutorImage" destination="mP6-Jd-NJb" id="bQ7-km-cj5"/>
+                                            <outlet property="tutorName" destination="1jT-cv-tAw" id="p7M-pJ-kY4"/>
+                                            <outlet property="tutorProgram" destination="jRp-t3-FzA" id="D1Z-jo-IA9"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -121,7 +129,6 @@
                         <gestureRecognizers/>
                     </view>
                     <navigationItem key="navigationItem" title="Feed" id="IYF-iF-1QG">
-                        <barButtonItem key="leftBarButtonItem" title="Inbox" id="DBh-5A-31f"/>
                         <barButtonItem key="rightBarButtonItem" title="Sign Out" id="X6p-IY-VVQ">
                             <connections>
                                 <action selector="signOutUser:" destination="Cc0-UQ-4oe" id="aQP-Nv-HKz"/>
@@ -129,7 +136,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchDisplayController" destination="3Ha-Bh-ef7" id="IWq-KE-byk"/>
+                        <outlet property="searchDisplayController" destination="J1t-pu-8tk" id="dC4-w7-Zab"/>
+                        <outlet property="tableView" destination="dtX-Mw-NOm" id="nl6-hH-QwY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aa8-Z7-wJy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -140,6 +148,14 @@
                         <outlet property="searchContentsController" destination="Cc0-UQ-4oe" id="gSu-hR-DWd"/>
                         <outlet property="searchResultsDataSource" destination="Cc0-UQ-4oe" id="dnV-av-TKt"/>
                         <outlet property="searchResultsDelegate" destination="Cc0-UQ-4oe" id="qHV-WG-RGq"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="J1t-pu-8tk">
+                    <connections>
+                        <outlet property="delegate" destination="Cc0-UQ-4oe" id="jg9-NY-A0b"/>
+                        <outlet property="searchContentsController" destination="Cc0-UQ-4oe" id="CHe-ei-pDh"/>
+                        <outlet property="searchResultsDataSource" destination="Cc0-UQ-4oe" id="Z1x-TS-4Bq"/>
+                        <outlet property="searchResultsDelegate" destination="Cc0-UQ-4oe" id="7UX-Ox-MFT"/>
                     </connections>
                 </searchDisplayController>
             </objects>

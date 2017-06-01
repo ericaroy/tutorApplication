@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2369D78D1EDB774200A9EF03 /* TutorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2369D78C1EDB774200A9EF03 /* TutorTableViewCell.swift */; };
 		3F12B0301EAA6D5700A6CA97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F12B02F1EAA6D5700A6CA97 /* AppDelegate.swift */; };
 		3F12B0351EAA6D5700A6CA97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F12B0331EAA6D5700A6CA97 /* Main.storyboard */; };
 		3F12B0371EAA6D5700A6CA97 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F12B0361EAA6D5700A6CA97 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		0EFBC3B98F95ADB326E7A218 /* Pods-TheTutorApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheTutorApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheTutorApp/Pods-TheTutorApp.debug.xcconfig"; sourceTree = "<group>"; };
+		2369D78C1EDB774200A9EF03 /* TutorTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorTableViewCell.swift; path = ../TutorTableViewCell.swift; sourceTree = "<group>"; };
 		3F12B02C1EAA6D5700A6CA97 /* TheTutorApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheTutorApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F12B02F1EAA6D5700A6CA97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F12B0341EAA6D5700A6CA97 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 		3F50340C1ED6213D00DB4BF2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2369D78C1EDB774200A9EF03 /* TutorTableViewCell.swift */,
 				3F5033FF1ED34D7700DB4BF2 /* FeedViewController.swift */,
 				3F5034001ED34D7700DB4BF2 /* SignInViewController.swift */,
 				3F5033FD1ED348C200DB4BF2 /* ProfileViewController.swift */,
@@ -389,6 +392,7 @@
 			files = (
 				3F50340A1ED61F7000DB4BF2 /* TutorData.swift in Sources */,
 				3F5034031ED34D7700DB4BF2 /* SignInViewController.swift in Sources */,
+				2369D78D1EDB774200A9EF03 /* TutorTableViewCell.swift in Sources */,
 				3F5033FE1ED348C200DB4BF2 /* ProfileViewController.swift in Sources */,
 				3F5034021ED34D7700DB4BF2 /* FeedViewController.swift in Sources */,
 				3F12B0301EAA6D5700A6CA97 /* AppDelegate.swift in Sources */,
