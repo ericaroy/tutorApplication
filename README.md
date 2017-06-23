@@ -1,6 +1,8 @@
 # Tutor Application - On-Going
 -----------------------
-A simple iOS application for campus tutor search.
+A simple iOS application for campus tutor search. 
+* Initial wireframes: [WIP - Wireframes](https://github.com/ericaroy/tutorApplication/wiki/Wireframes)
+* Additional Design Notes: [Design Notes](https://github.com/ericaroy/tutorApplication/wiki/Design-Brainstorm---Notes)
 
 
 Installation
