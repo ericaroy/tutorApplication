@@ -11,6 +11,7 @@ target 'TheTutorApp' do
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
   pod ‘Firebase/Database’
+  pod ‘GoogleAPIClientForREST/Calendar’, ‘~> 1.2.1’
 
 
 
