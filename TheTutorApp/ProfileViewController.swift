@@ -48,35 +48,20 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func signOutUser(_ sender: Any) {
+
+
+    @IBAction func requestTutorTapped(_ sender: Any) {
         
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            GIDSignIn.sharedInstance().signOut()
+        let requestAlert = UIAlertController.init(title: "Requesting Tutor", message: "Request Sent", preferredStyle: .alert)
+        let tutorAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+            print("You've pressed OK button");
             
-            print("Signed Out")
-            self.dismiss(animated: true, completion: {
-                print("Dismissed")
-                
-            })
-        } catch  {
-            print ("Error signing out:")
-            print(Error.self)
         }
+        requestAlert.addAction(tutorAction)
+        self.present(requestAlert, animated: true)
         
         
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

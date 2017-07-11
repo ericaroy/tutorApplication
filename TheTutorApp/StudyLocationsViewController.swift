@@ -1,21 +1,30 @@
 //
-//  SettingsViewController.swift
+//  StudyLocationsViewController.swift
 //  TheTutorApp
 //
-//  Created by Erica Roy on 6/22/17.
+//  Created by Erica Roy on 7/10/17.
 //  Copyright © 2017 Erica Roy. All rights reserved.
 //
 
 import UIKit
-import GoogleSignIn
-import Firebase
+import MapKit
 
-class SettingsViewController: UIViewController {
+class StudyLocationsViewController: UIViewController {
 
+    @IBOutlet weak var mapLocations: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        var user = Auth.auth().currentUser?.uid
-        var handle: AuthStateDidChangeListenerHandle?
+        let location = CLLocationCoordinate2D(
+            latitude: 34.722426, longitude: -92.338982)
+        
+        let coords = MKCoordinateSpanMake(0.05,0.05)
+        let region = MKCoordinateRegion(center: location, span: coords)
+        mapLocations.setRegion(region, animated: true)
+        
+        let annot = MKPointAnnotation()
+        annot.coordinate = location
+        annot.title = "UA-Little Rock"
+        mapLocations.addAnnotation(annot)
 
         // Do any additional setup after loading the view.
     }
@@ -23,26 +32,6 @@ class SettingsViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func signOutUser(_ sender: Any) {
-        
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-            GIDSignIn.sharedInstance().signOut()
-            
-            print("Signed Out")
-            self.dismiss(animated: true, completion: {
-                print("Dismissed")
-                
-            })
-        } catch  {
-            print ("Error signing out:")
-            print(Error.self)
-        }
-        
-        
     }
     
 

@@ -15,7 +15,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     var subjects = [String] ()
     
-    //TODO: Pull From Source for Updates/Remove Hard Coding Dispatch
+    //TODO: Pull From Source for Updates/Remove Hard Coding Dispatchv
     var predictText = ["Accounting",
     "Adult Education",
     "Advertising",
@@ -81,9 +81,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
        
         tableView.isHidden = true
-        
-        
-
         // Do any additional setup after loading the view.
     }
     
@@ -106,6 +103,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+
     func searchTextEntry(substring: String) {
         subjects.removeAll(keepingCapacity: false)
         
@@ -115,16 +113,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let theString = x as NSString
             let subStringRange = theString.range(of: substring)
             if (subStringRange.location == 0) {
-                
-              
                 subjects.append(x)
             }
-           
         }
         tableView.reloadData()
     }
     
- 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -143,19 +137,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //TODO: Return Resources From Selection by Department
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let index = subjects[indexPath.row]
-        print(index)
+        let index = subjects[indexPath.row] 
         
+      
         
-        
-        
-        
-        
-    }
-    
-
-
+       
+}
 
 }

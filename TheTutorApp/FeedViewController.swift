@@ -31,37 +31,44 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
+       //TODO: Cache initial download of dataMath
         let ref = Database.database().reference()
      
-        ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
-            // Get user value
-            self.tutors = []
-            
-            if let result = snapshot.children.allObjects as? [DataSnapshot] {
-                for child in result {
-                    let xDict = child.value as? NSDictionary
-                   // print(child.key)
-                    let key = child.key
-                    
-                   // print(xDict)
-                   let stuff = Tutor(key: key, dictionary: xDict!)
-                   // print(x?["email"] as! String)
-                   // print(stuff)
-                    self.tutors.insert(stuff, at: 0)
-                   // print(self.tutors)
- 
+        DispatchQueue.global().async {
+            [unowned self] in
+            ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
+                // Get user value
+                self.tutors = []
+                
+                if let result = snapshot.children.allObjects as? [DataSnapshot] {
+                    for child in result {
+                        let xDict = child.value as? NSDictionary
+                        // print(child.key)
+                        let key = child.key
+                        
+                        // print(xDict)
+                        let stuff = Tutor(key: key, dictionary: xDict!)
+                        // print(x?["email"] as! String)
+                        //print(stuff)
+                        self.tutors.insert(stuff, at: 0)
+                        // print(self.tutors)
+                        
+                    }
                 }
+                DispatchQueue.main.async {
+                    [unowned self] in
+                    self.tableView.reloadData()
+                }
+                
+                
+            }) { (error) in
+                print(error)
             }
-            self.tableView.reloadData()
-            
-            
-        }) { (error) in
-            print(error)
         }
+        
     }
 
-    
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -94,6 +101,7 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDele
         return tutors.count
     }
     
+    
  
       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -103,6 +111,7 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDele
         let theTutor = tutors[indexPath.row]
         cell.tutorName?.text = theTutor.firstName + " " + theTutor.lastName
         cell.tutorProgram?.text = theTutor.programCode
+        
         
         let url = URL(string: theTutor.profileImageURL)
         if let data = NSData(contentsOf: url!) {
@@ -134,6 +143,7 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDele
      
     }
     
+    //TODO: Add List View images according to subjects in tutor profile 
     
 
       /*

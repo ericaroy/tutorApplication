@@ -44,6 +44,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDe
                 
             }
             emailAlert.addAction(emailAction)
+            self.present(emailAlert, animated: true)
 
             
         }else{
