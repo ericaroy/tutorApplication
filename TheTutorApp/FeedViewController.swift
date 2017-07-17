@@ -24,6 +24,8 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDele
     var user = Auth.auth().currentUser
     var ref: DatabaseReference!
     var tutors = [Tutor] ()
+ 
+   
     
     @IBOutlet weak var tutorSearchBar: UISearchBar!
     
@@ -31,9 +33,14 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       //TODO: Cache initial download of dataMath
+       getTutors()
+       
+        
+    }
+    
+    func getTutors() {
         let ref = Database.database().reference()
-     
+        
         DispatchQueue.global().async {
             [unowned self] in
             ref.child("users").observeSingleEvent(of: .value, with: { (snapshot) in
@@ -48,23 +55,29 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDele
                         
                         // print(xDict)
                         let stuff = Tutor(key: key, dictionary: xDict!)
-                        // print(x?["email"] as! String)
-                        //print(stuff)
+                        //print(x?["email"] as! String)
+                        // print(type(of: stuff.subjectCode ))
                         self.tutors.insert(stuff, at: 0)
-                        // print(self.tutors)
+                        //print(self.tutors)
+                        
                         
                     }
                 }
+                
                 DispatchQueue.main.async {
                     [unowned self] in
                     self.tableView.reloadData()
+                    
+                    
                 }
                 
                 
             }) { (error) in
                 print(error)
             }
+            
         }
+ 
         
     }
 
@@ -112,6 +125,46 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDele
         cell.tutorName?.text = theTutor.firstName + " " + theTutor.lastName
         cell.tutorProgram?.text = theTutor.programCode
         
+        if (theTutor.subjectCode[0] == "Mathematics") {
+            
+        }
+        switch theTutor.subjectCode[0] {
+            case "Mathematics":
+                cell.subjectImage?.image = UIImage(named: "Math-1")
+            case "Music":
+                cell.subjectImage?.image = UIImage(named: "Music")
+            case "Biology":
+                cell.subjectImage?.image = UIImage(named: "Biology")
+            case "Art":
+                cell.subjectImage?.image = UIImage(named: "Art")
+            case "Business Admin":
+                cell.subjectImage?.image = UIImage(named: "BusAdmin")
+            case "Chemistry":
+                cell.subjectImage?.image = UIImage(named: "Chemistry")
+            case "Computer Scicence":
+                cell.subjectImage?.image = UIImage(named: "CompSci")
+            case "Criminal Justice":
+                cell.subjectImage?.image = UIImage(named: "CrimJustice")
+            case "Marketing":
+                cell.subjectImage?.image = UIImage(named: "Marketing")
+            case "Mass Comm":
+                cell.subjectImage?.image = UIImage(named: "MassComm")
+            case "Music":
+                cell.subjectImage?.image = UIImage(named: "Music")
+            case "Nursing":
+                cell.subjectImage?.image = UIImage(named: "Nursing")
+            case "Physics":
+                cell.subjectImage?.image = UIImage(named: "Physics")
+            case "Political Science":
+                cell.subjectImage?.image = UIImage(named: "PoliticalScience")
+            
+        default:
+            cell.subjectImage?.image = UIImage(named: "Math-1")
+            
+            
+            
+        }
+        
         
         let url = URL(string: theTutor.profileImageURL)
         if let data = NSData(contentsOf: url!) {
@@ -122,6 +175,7 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDele
         cell.tutorImage.clipsToBounds = true
         cell.tutorImage.layer.borderWidth = 2.0
         cell.tutorImage.layer.borderColor = UIColor.black.cgColor
+   
      
         return cell
      }
@@ -137,27 +191,13 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDele
                 let profilerView = segue.destination as! ProfileViewController
                 profilerView.tutorNameProfile = tutors[indexPath.row].firstName + " " + tutors[indexPath.row].lastName
                 profilerView.profileViewImageURL = tutors[indexPath.row].profileImageURL
+                profilerView.profileSubject = tutors[indexPath.row].subjectCode
                 
             }
         }
      
     }
     
-    //TODO: Add List View images according to subjects in tutor profile 
-    
-
-      /*
-     //Dismiss Keyboard
-     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-     self.view.endEditing(true)
-     }
-     
-     //Dismiss Keyboard via Return
-     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-     self.view.endEditing(true)
-     return false
-     
-     }
-    */
+  
 
 }
