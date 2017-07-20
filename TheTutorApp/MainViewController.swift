@@ -136,14 +136,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     //TODO: Return Resources From Selection by Department
-    
+    /*
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let index = subjects[indexPath.row] 
-        
-      
-        
-       
+        let index = subjects[indexPath.row]  
 }
-
+*/
 }

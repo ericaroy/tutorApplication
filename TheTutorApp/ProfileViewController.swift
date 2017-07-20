@@ -9,12 +9,12 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import GoogleAPIClientForREST
+
 
 
 class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-  
-
     @IBOutlet weak var profileTableView: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     var tutorNameProfile: String = ""
@@ -41,13 +41,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             imageViewProfile.layer.borderColor = UIColor.black.cgColor
         }
         print(profileSubject)
-        
-        
-        
-
-        // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,7 +67,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    
     //TODO: Send session request to scheduling workflow
 
     @IBAction func requestSession(_ sender: Any) {
@@ -86,20 +80,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.present(requestAlert, animated: true)
         
     }
-    /*
 
-    @IBAction func requestTutorTapped(_ sender: Any) {
-        
-        let requestAlert = UIAlertController.init(title: "Requesting Tutor", message: "Request Sent", preferredStyle: .alert)
-        let tutorAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-            print("You've pressed OK button");
-            
-        }
-        requestAlert.addAction(tutorAction)
-        self.present(requestAlert, animated: true)
-        
-        
-    }
-*/
 
 }

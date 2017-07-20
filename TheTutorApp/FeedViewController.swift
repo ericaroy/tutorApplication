@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import GoogleSignIn
-import GoogleAPIClientForREST
 
 
 
@@ -17,8 +16,7 @@ import GoogleAPIClientForREST
 
 class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource{
    
-    private let scopes = [kGTLRAuthScopeCalendarReadonly]
-    private let service = GTLRCalendarService()
+
     
     var handle: AuthStateDidChangeListenerHandle?
     var user = Auth.auth().currentUser
@@ -125,9 +123,7 @@ class FeedViewController: UIViewController, GIDSignInUIDelegate, UITableViewDele
         cell.tutorName?.text = theTutor.firstName + " " + theTutor.lastName
         cell.tutorProgram?.text = theTutor.programCode
         
-        if (theTutor.subjectCode[0] == "Mathematics") {
-            
-        }
+     
         switch theTutor.subjectCode[0] {
             case "Mathematics":
                 cell.subjectImage?.image = UIImage(named: "Math-1")

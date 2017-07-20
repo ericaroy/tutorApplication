@@ -23,6 +23,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate, GIDSignInUIDe
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signInSilently()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
